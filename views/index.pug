@@ -5,6 +5,20 @@ block content
   p Welcome to #{title}
   p Welcome to mypage 
   
-  button(type="button", class="btn btn-secondary") PressMe 
+  button(type="button", class="btn btn-secondary", onclick="update()") PressMe
+  div(id="target") Display
+  script(type='text/javascript').
+    let client_count=0;
+    function update(){
+      client_count=client_count+1
+      document.getElementById('target').innerHTML="value now "+client_count
+    };
+     
+   
+     
+
+
   
+    
+ 
 
