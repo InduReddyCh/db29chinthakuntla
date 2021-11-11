@@ -62,6 +62,7 @@ var usersRouter = require('./routes/users');
 var ballRouter  = require('./routes/ball');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
 
 
 
@@ -82,6 +83,7 @@ app.use('/users', usersRouter);
 app.use('/ball', ballRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/', resourceRouter);
 
 
 // catch 404 and forward to error handler
