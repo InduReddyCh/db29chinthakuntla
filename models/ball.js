@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('ball', { title: 'Search Results Ball' });
-});
-
-module.exports = router;
+const mongoose = require("mongoose")
+const ballSchema = mongoose.Schema({
+    bColor: String,
+    bShape: String,
+    bSize: Number
+})
+module.exports = mongoose.model("ball",
+    ballSchema)
