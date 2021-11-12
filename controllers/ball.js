@@ -4,14 +4,14 @@ exports.ball_list = function (req, res) {
     res.send('NOT IMPLEMENTED: ball list');
 };
 // for a specific ball.
-exports.ball_detail =async function (req, res) {
+exports.ball_detail = async function (req, res) {
     console.log("detail" + req.params.id)
     try {
-    result = await ball.findById( req.params.id)
-    res.send(result)
+        result = await ball.findById(req.params.id)
+        res.send(result)
     } catch (error) {
-    res.status(500)
-    res.send(`{"error": document for id ${req.params.id} not found`);
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
     }
 };
 // Handle ball create on POST.
@@ -38,8 +38,24 @@ exports.ball_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: ball delete DELETE ' + req.params.id);
 };
 // Handle ball update form on PUT.
-exports.ball_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: ball update PUT' + req.params.id);
+
+exports.ball_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await ball.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.bColor) toUpdate.bColor = req.body.bColor;
+        if (req.body.bShape) toUpdate.bShape = req.body.bShape;
+        if (req.body.bSize) toUpdate.bSize = req.body.bSize;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+    }
 };
 
 // List of all balls

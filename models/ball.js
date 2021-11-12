@@ -4,5 +4,4 @@ const ballSchema = mongoose.Schema({
     bShape: String,
     bSize: Number
 })
-module.exports = mongoose.model("ball",
-    ballSchema)
+module.exports = mongoose.model("ball", ballSchema)
