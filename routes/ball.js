@@ -10,3 +10,5 @@ router.get('/ball/:id', ball_controller.ball_detail);
 module.exports = router;
 /* GET detail ball page */
 router.get('/detail', ball_controller.ball_view_one_Page);
+/* GET create ball page */
+router.get('/create', ball_controller.ball_create_Page);
