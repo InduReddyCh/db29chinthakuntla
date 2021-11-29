@@ -1,19 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p Welcome to mypage 
+ if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+  br
+  a(href="/ping") Ping
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/ball") Take me to balls 
+  br
+  a(href="/logout") Logout
   
-  button(type="button", class="btn btn-secondary", onclick="update()") PressMe
-  div(id="target") Display
-  script(type='text/javascript').
-    let client_count=0;
-    function update(){
-      client_count=client_count+1
-      document.getElementById('target').innerHTML="value now "+client_count
-    };
-  a(href='ball') Ball
      
    
      
