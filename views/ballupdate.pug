@@ -12,13 +12,13 @@ block content
  form(id='ballForm', action= actionid, method="PUT")
   div.form-group
     label.ballAttr(for='bColor') ball color 
-    input#ball_type(type='text', name='bColor', value= bColor )
+    input#ball_type(type='text', name='bColor', minlength="3", maxlength="6", value= bColor )
   div.form-group
     label.ballAttr(for='bShape') ball shape
     input#size(type='text', name='bShape', value= bShape )
   div.form-group
     label.ballAttr(for='bSize') ball size
-    input#cost(type='number', name='bSize', value= bSize )
+    input#cost(type='number', name='bSize', min="6", max="15", value= bSize )
   input(type="submit")
  script.
   document.forms['ballForm'].addEventListener('submit', (event) => {

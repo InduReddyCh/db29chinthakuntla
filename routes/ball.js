@@ -13,16 +13,14 @@ const secured = (req, res, next) => {
   }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('ball', { title: 'Search Results Ball' });
-});
+router.get('/', ball_controller.ball_view_all_Page);
 router.get('/ball/:id', ball_controller.ball_detail);
 module.exports = router;
 /* GET detail ball page */
 router.get('/detail', ball_controller.ball_view_one_Page);
 /* GET create ball page */
-router.get('/create', ball_controller.ball_create_Page);
+router.get('/create',secured, ball_controller.ball_create_Page);
 /* GET update ball page */
 router.get('/update',secured, ball_controller.ball_update_Page);
 /* GET create ball page */
-router.get('/delete', ball_controller.ball_delete_Page);
+router.get('/delete',secured, ball_controller.ball_delete_Page);

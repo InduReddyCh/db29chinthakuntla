@@ -2,28 +2,17 @@ extends layout
 
 block content
   h1= title
-  
+  - let items =results;
   p Ball  results
   div(class="container-fluid")
         div(class="row")
-            -
-                let items  = [
-                    {
-                        "bColor": "Blue",
-                        "bShape": "Circle",
-                        "bSize": 10
-                    },
-                    {
-                        "bColor": "Red",
-                        "bShape": "Circle",
-                        "bSize": 20
-                    },
-                    {
-                        "bColor": "White",
-                        "bShape": "Circle",
-                        "bSize": 15
-                    },                   
-                ]
             each item in items
+              - let destination = `dispatch(\"/ball/update?id=${item._id}\")`
               div(class="row-sm-2", class="m-1") Item #{item.bColor}(#{item.bShape}) is #{item.bSize}
                button.btn( class="btn-primary ml-1", onclick= destination) Update
+               button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/ball/detail?id=${item._id}\")`) Details 
+               button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/ball/delete?id=${item._id}\")`) Delete
+  script.
+    function dispatch(path){    
+        window.location.href=path   
+    }
